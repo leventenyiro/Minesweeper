@@ -56,7 +56,17 @@ void placeNumbers(int table[10][10]) {
 }
 
 void show(int found[10][10]) {
-    
+    for (int i = 0; i < 10; ++i) {
+        printf("\t%d", i);
+    }
+    printf("\n");
+    for (int i = 0; i < 10; ++i) {
+        printf("%c", 65 + i);
+        for (int j = 0; j < 10; ++j) {
+            printf("\tX");
+        }
+        printf("\n");
+    }
 }
 
 void solution(int table[10][10]) {
@@ -91,16 +101,21 @@ int main() {
     placeMine(minePiece, table);
     placeNumbers(table);
 
-    // bekérés
-    char tip[2] = "";
+    char tip[255];
     do {
-        printf("Tipp (pl.: A9): ");
-        scanf("%s%s", &tip[0], &tip[1]);
-        if (tip[0] < 'A' || tip[0] > 'J' || tip[1] < '0' || tip[1] > '9')
-            printf("A tipp A-J es 0-9 kozott mozog!");
-    } while (tip[0] < 'A' || tip[0] > 'J' || tip[1] < '0' || tip[1] > '9');
+        // bekérés
+
+        do {
+            printf("Tipp (pl.: A9): ");
+            scanf("%s[^\n]", tip);
+            if (tip[0] < 'A' || tip[0] > 'J' || tip[1] < '0' || tip[1] > '9')
+                printf("A tipp A-J es 0-9 kozott mozog!");
+        } while (tip[0] < 'A' || tip[0] > 'J' || tip[1] < '0' || tip[1] > '9');
+
+    } while ()
 
 
+    show(found);
 
     //solution(table); - megoldás
 
